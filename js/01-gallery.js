@@ -8,6 +8,15 @@ const picturesMarkup = createPicturesMarkup(galleryItems);
 
 galleryContainer.insertAdjacentHTML('beforeend', picturesMarkup);
 
+galleryContainer.addEventListener('click', handleGetUrlPicture);
+
+function handleGetUrlPicture (e) {
+    // e.currentTarget;
+    console.log(e.currentTarget);
+//   e.currentTarget = galleryContainer.original; 1.11.32
+}
+
+
 function createPicturesMarkup (pictures) {
 return pictures.map(({preview, original, description}) => {
 return `
