@@ -8,13 +8,12 @@ const picturesMarkup = createPicturesMarkup(galleryItems);
 
 galleryContainer.insertAdjacentHTML('beforeend', picturesMarkup);
 
-galleryContainer.addEventListener('click', handleGetUrlPicture);
+galleryContainer.addEventListener('click', handleGetUrlPictureClick);
 
-function handleGetUrlPicture (e) {
-    // e.currentTarget;
-    console.log(e.currentTarget);
-//   e.currentTarget = galleryContainer.original; 1.11.32
-}
+// function handleGetUrlPicture (e) {
+//     // e.currentTarget;
+//     console.log(e.currentTarget);
+// }
 
 
 function createPicturesMarkup (pictures) {
