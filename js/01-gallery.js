@@ -35,4 +35,11 @@ return `
 .join(''); 
 }
 
-// console.log(createPicturesMarkup);
+function handleGetUrlPictureClick (e) {
+  const isGallaryRef = e.target.classList.contains('.gallery');
+   if(!isGallaryRef) {
+ return
+ }
+  // console.log(e.target.dataset.original);
+  console.log(e.target.dataset.source)
+ }
