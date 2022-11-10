@@ -58,7 +58,7 @@ console.log(e);
 const ESK_KEY_CODE = 'Escape'
 if (e.code === ESK_KEY_CODE) {
   // закриття модалки Esc
-  // instance.close();
+  // instance.close();  Бібліотека basicLightbox містить метод для програмного закриття модального вікна.
 }
 }
 
