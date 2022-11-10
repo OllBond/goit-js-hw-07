@@ -1,18 +1,19 @@
-import { galleryItems } from './gallery-items.js';
+import { galleryItems } from "./gallery-items.js";
 // Change code below this line
 console.log(galleryItems);
 
-const galleryContainer = document.querySelector('.gallery');
+const galleryContainer = document.querySelector(".gallery");
 
 const picturesMarkup = createPicturesMarkup(galleryItems);
 
-galleryContainer.insertAdjacentHTML('beforeend', picturesMarkup);
+galleryContainer.insertAdjacentHTML("beforeend", picturesMarkup);
 
-galleryContainer.addEventListener('click', handleGetUrlPictureClick);
+galleryContainer.addEventListener("click", handleGetUrlPictureClick);
 
-function createPicturesMarkup (pictures) {
-return pictures.map(({preview, original, description}) => {
-return `
+function createPicturesMarkup(pictures) {
+  return pictures
+    .map(({ preview, original, description }) => {
+      return `
 <div class="gallery__item">
   <a class="gallery__link" href="${original}">
     <img
@@ -24,42 +25,36 @@ return `
   </a>
 </div>
 `;
-})
-.join(''); 
+    })
+    .join("");
 }
 
-function handleGetUrlPictureClick (e) {
+function handleGetUrlPictureClick(e) {
   e.preventDefault();
-  
-  const isGallaryRef = e.target.classList.contains('gallery__image');
-   if(!isGallaryRef) {
- return
- }
+
+  const isGallaryRef = e.target.classList.contains("gallery__image");
+  if (!isGallaryRef) {
+    return;
+  }
   // console.log(e.target.dataset.original);
   console.log(e.target.dataset.source);
 
   const instance = basicLightbox.create(
     `<img src="${e.target.dataset.source}" width="800" height="600">`,
     {
-      onShow: instance => {
-       window.addEventListener('keydown', handlrCloseModalWindowByEsc);
-      },
-      onClose: instance => {
-      window.removeEventListener('keydown', handlrCloseModalWindowByEsc);
+      onClose: (instance) => {
+        window.addEventListener("keydown", handlrCloseModalWindowByEsc);
       },
     }
-  ); 
- instance.show();
-//  instance.close();
-}
+  );
+  instance.show();
 
-function handlrCloseModalWindowByEsc (e) {
-console.log(e);
-const ESK_KEY_CODE = 'Escape'
-if (e.code === ESK_KEY_CODE) {
-  // закриття модалки Esc
-  // instance.close();  Бібліотека basicLightbox містить метод для програмного закриття модального вікна.
-}
-}
+  function handlrCloseModalWindowByEsc(e) {
+    console.log(e);
+    const ESK_KEY_CODE = "Escape";
+    if (e.code === ESK_KEY_CODE) {
 
- 
+      instance.close();
+    }
+  }
+}
