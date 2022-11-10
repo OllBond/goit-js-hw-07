@@ -29,24 +29,37 @@ return `
 }
 
 function handleGetUrlPictureClick (e) {
-  const isGallaryRef = e.target.classList.contains('.gallery');
+  e.preventDefault();
+  
+  const isGallaryRef = e.target.classList.contains('gallery__image');
    if(!isGallaryRef) {
  return
  }
   // console.log(e.target.dataset.original);
   console.log(e.target.dataset.source);
- }
 
- const instance = basicLightbox.create(
-  `<img src="${e.target.dataset.source}" width="800" height="600">`,
-  {
-    onShow: instance => {
-     //......
-    },
-    onClose: instance => {
-     //........
-    },
-  }
-);
+  const instance = basicLightbox.create(
+    `<img src="${e.target.dataset.source}" width="800" height="600">`,
+    {
+      onShow: instance => {
+       window.addEventListener('keydown', handlrCloseModalWindowByEsc);
+      },
+      onClose: instance => {
+      window.removeEventListener('keydown', handlrCloseModalWindowByEsc);
+      },
+    }
+  ); 
+ instance.show();
+//  instance.close();
+}
 
-instance.show();
+function handlrCloseModalWindowByEsc (e) {
+console.log(e);
+const ESK_KEY_CODE = 'Escape'
+if (e.code === ESK_KEY_CODE) {
+  // закриття модалки Esc
+  // instance.close();
+}
+}
+
+ 
