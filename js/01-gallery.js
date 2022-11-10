@@ -10,12 +10,6 @@ galleryContainer.insertAdjacentHTML('beforeend', picturesMarkup);
 
 galleryContainer.addEventListener('click', handleGetUrlPictureClick);
 
-// function handleGetUrlPicture (e) {
-//     // e.currentTarget;
-//     console.log(e.currentTarget);
-// }
-
-
 function createPicturesMarkup (pictures) {
 return pictures.map(({preview, original, description}) => {
 return `
@@ -40,5 +34,19 @@ function handleGetUrlPictureClick (e) {
  return
  }
   // console.log(e.target.dataset.original);
-  console.log(e.target.dataset.source)
+  console.log(e.target.dataset.source);
  }
+
+ const instance = basicLightbox.create(
+  `<img src="${e.target.dataset.source}" width="800" height="600">`,
+  {
+    onShow: instance => {
+     //......
+    },
+    onClose: instance => {
+     //........
+    },
+  }
+);
+
+instance.show();
