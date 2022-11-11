@@ -42,7 +42,7 @@ function handleGetUrlPictureClick(e) {
   const instance = basicLightbox.create(
     `<img src="${e.target.dataset.source}" width="800" height="600">`,
     {
-      onClose: (instance) => {
+      onShow: (instance) => {
         window.addEventListener("keydown", handlrCloseModalWindowByEsc);
       },
     }
