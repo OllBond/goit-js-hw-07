@@ -17,8 +17,9 @@ function createPicturesMarkup(pictures) {
 <div class="gallery__item">
   <a class="gallery__link" href="${original}">
     <img
-      class="gallery__image"
-      src="${preview}"
+    loading="lazy"
+      class="gallery__image lazyload"
+      data-src="${preview}"
       data-source="${original}"
       alt="${description}"
     />
