@@ -44,13 +44,13 @@ function handleGetUrlPictureClick(e) {
     `<img src="${e.target.dataset.source}" width="800" height="600">`,
     {
       onShow: (instance) => {
-        window.addEventListener("keydown", handlrCloseModalWindowByEsc);
+        window.addEventListener("keydown", handleCloseModalWindowByEsc);
       },
     }
   );
   instance.show();
 
-  function handlrCloseModalWindowByEsc(e) {
+  function handleCloseModalWindowByEsc(e) {
     console.log(e);
     const ESK_KEY_CODE = "Escape";
     if (e.code === ESK_KEY_CODE) {
